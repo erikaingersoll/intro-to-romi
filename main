@@ -13,7 +13,8 @@ void setup() {
 }
 void moveForward(float distance, float wheelDiameter)
 {
-  int angle = (360 * (distance)/wheelDiameter * 3.1416);
+  float wheelDistance = distance / wheelDiameter * 3.1416 * 360;
+  int angle = (360 * (wheelDistance)/wheelDiameter * 3.1416);
   motor1.StartMoveFor(angle, 60);
   motor2.StartMoveFor(angle, 60);
 }
