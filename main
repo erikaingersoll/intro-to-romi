@@ -28,6 +28,6 @@ void turnAngle(float turnAngle, float wheelDiameter, float wheelTread)
 void loop()
 {
   // put your main code here, to run repeatedly:
-  motor1.moveForward(2, 2.5);
-  motor1.moveForward(90, 2.5, 6);
+  moveForward(2, 2.5);
+  turnAngle(90, 2.5, 6);
 }
