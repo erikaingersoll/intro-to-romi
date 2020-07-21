@@ -1,35 +1,56 @@
+/*
+ * This program will wait for the button to be pressed and then:
+ *  command the left motor to spin at 60 rpm, 
+ *  wait 5 seconds, 
+ *  and then stop the motor. 
+ * While the motor is spinning, the program will print out how much it has turned (in degrees).
+ */
+
 #include <Arduino.h>
 #include <RBE1001Lib.h>
 
 Motor motor1;
 Motor motor2;
 
-void setup() {
-  // put your setup code here, to run once:
+const int buttonPin = 0;
+
+void setup() 
+{
+  // This will initialize the Serial as 115200 for prints
   Serial.begin(115200);
   Motor::allocateTimer(0);
   motor1.attach(MOTOR1_PWM, MOTOR1_DIR, MOTOR1_ENCA, MOTOR1_ENCB);
   motor2.attach(MOTOR2_PWM, MOTOR2_DIR, MOTOR2_ENCA, MOTOR2_ENCB);
+
+  //explicitly make the button pin an input and engage the internal pullup resistor
+  pinMode(buttonPin, INPUT_PULLUP);
 }
+
 void moveForward(float distance, float wheelDiameter)
 {
   float wheelDistance = distance / wheelDiameter * 3.1416 * 360;
   int angle = (360 * (wheelDistance)/wheelDiameter * 3.1416);
-  motor1.StartMoveFor(angle, 60);
-  motor2.StartMoveFor(angle, 60);
+  motor1.MoveFor(angle, 60);
+  motor2.MoveFor(angle, 60);
 }
 void turnAngle(float turnAngle, float wheelDiameter, float wheelTread)
 {
   int wheelRotation = (turnAngle * wheelTread)/(wheelDiameter / 2);
-  motor1.StartMoveFor(wheelRotation, 60);
-  motor2.StartMoveFor(-wheelRotation, 60);
+  motor1.MoveFor(wheelRotation, 60);
+  motor2.MoveFor(-wheelRotation, 60);
   
 }
 
-void loop()
+void loop() 
 {
+  //The following line will cause the program to wait indefinitely until the button is pressed
+  while(digitalRead(buttonPin)) {} 
+
+  motor1.MoveFor(360, 60);
+  motor2.MoveFor(360, 60);
+  
   // put your main code here, to run repeatedly:
-  moveForward(2, 2.5);
+  /*moveForward(2, 2.5);
   delay(5000);
-  turnAngle(90, 2.5, 6);
+  turnAngle(90, 2.5, 6);*/
 }
