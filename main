@@ -12,6 +12,7 @@
 Motor motor1;
 Motor motor2;
 
+const float wheelDiameter = 2.5;
 const int buttonPin = 0;
 
 void setup() 
@@ -26,14 +27,14 @@ void setup()
   pinMode(buttonPin, INPUT_PULLUP);
 }
 
-void moveForward(float distance, float wheelDiameter)
+void moveForward(float distance)
 {
   float wheelDistance = distance / wheelDiameter * 3.1416 * 360;
   int angle = (360 * (wheelDistance)/wheelDiameter * 3.1416);
   motor1.MoveFor(angle, 60);
   motor2.MoveFor(angle, 60);
 }
-void turnAngle(float turnAngle, float wheelDiameter, float wheelTread)
+void turnAngle(float turnAngle, float wheelTread)
 {
   int wheelRotation = (turnAngle * wheelTread)/(wheelDiameter / 2);
   motor1.MoveFor(wheelRotation, 60);
