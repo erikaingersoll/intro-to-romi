@@ -29,5 +29,6 @@ void loop()
 {
   // put your main code here, to run repeatedly:
   moveForward(2, 2.5);
+  delay(5000);
   turnAngle(90, 2.5, 6);
 }
