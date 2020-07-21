@@ -21,7 +21,7 @@ void turnAngle(float turnAngle, float wheelDiameter, float wheelTread)
 {
   int wheelRotation = (turnAngle * wheelTread)/(wheelDiameter / 2);
   motor1.MoveTo(wheelRotation, 60);
-  motor1.MoveTo(-wheelRotation, 60);
+  motor2.MoveTo(-wheelRotation, 60);
   
 }
 
