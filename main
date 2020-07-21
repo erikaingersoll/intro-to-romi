@@ -1,6 +1,9 @@
 #include <Arduino.h>
 #include <RBE1001Lib.h>
 
+Motor motor1;
+Motor motor2;
+
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(115200);
