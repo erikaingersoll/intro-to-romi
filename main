@@ -8,8 +8,8 @@ void setup() {
   motor1.attach(MOTOR1_PWM, MOTOR1_DIR, MOTOR1_ENCA, MOTOR1_ENCB);
   motor2.attach(MOTOR2_PWM, MOTOR2_DIR, MOTOR2_ENCA, MOTOR2_ENCB);
 }
-void moveForward(float distance, float wheelDiameter
-(
+void moveForward(float distance, float wheelDiameter)
+{
   float angle = (360 * (distance * 3.1415))/wheelDiameter;
   motor1.MoveTo(angle, 60);
   motor2.MoveTo(angle, 60);
