@@ -24,8 +24,8 @@ void turnAngle(float turnAngle, float wheelDiameter, float wheelTread)
   motor1.MoveTo(-wheelRotation, 60);
   
 }
-void 
-void loop(float targetDistance, float wheelDiameter)
+
+void loop()
 {
   // put your main code here, to run repeatedly:
   motor1.moveForward(2, 2.5);
