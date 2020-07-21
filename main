@@ -29,11 +29,11 @@ void setup()
 
 void moveForward(float distance)
 {
-  float wheelDistance = distance / wheelDiameter * 3.1416 * 360;
-  int angle = (360 * (wheelDistance)/wheelDiameter * 3.1416);
-  motor1.MoveFor(angle, 60);
-  motor2.MoveFor(angle, 60);
+  float wheelDistance = (distance/(wheelDiameter * 3.1416)) * 360;
+  motor1.MoveFor(wheelDistance, 60);
+  motor2.MoveFor(wheelDistance, 60);
 }
+
 void turnAngle(float turnAngle, float wheelTread)
 {
   int wheelRotation = (turnAngle * wheelTread)/(wheelDiameter / 2);
@@ -51,7 +51,7 @@ void loop()
   motor2.MoveFor(-360, 60);
   
   // put your main code here, to run repeatedly:
-  /*moveForward(2, 2.5);
+  /*moveForward(2);
   delay(5000);
   turnAngle(90, 2.5, 6);*/
 }
